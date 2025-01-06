@@ -1,0 +1,6 @@
+fastqc yourfilename.fasta 
+
+#in home terminal 
+scp ealamb@quartz.uits.iu.edu:/N/slate/ealamb/GSF1441/fastq/GSF1441-neural205-1_S11_R1_001_fastqc.zip ~/Desktop/
+
+#unzip the file and look at the fastqc_data.txt file
