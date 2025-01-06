@@ -1,0 +1,31 @@
+#1
+BAMS=($(find ./results/aligned -name "*\.bam"))
+
+for BAM in ${BAMS[@]}; do 
+  samtools index $BAM
+  done
+
+#2
+
+# Create an output directory for read counts.
+mkdir -p results/counts
+
+# Count reads.
+BAMS=$(find ./results/aligned -name "*\.bam")
+
+featureCounts \
+  -a genome/annotation.gtf \
+  -o results/counts/counts.tsv \
+  -t gene \
+  -g gene_id \
+  --largestOverlap \
+  --readExtension3 150 \
+  --primary \
+  -s 2 \
+  -T 8 \
+  ${BAMS}
+done
+
+#3 Look at % uniquely mapped reads
+
+nano yourfile.Log.final.out
