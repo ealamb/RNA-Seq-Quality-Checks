@@ -6,8 +6,15 @@ ASSEMBLY='ftp://ftp.wormbase.org/pub/wormbase/releases/WS275/species/c_elegans/P
 ANNOTATION='ftp://ftp.wormbase.org/pub/wormbase/releases/WS275/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS275.canonical_geneset.gtf.gz'
 
 #3
-curl $ASSEMBLY | gunzip > ./genome/assembly.fasta
-curl $ANNOTATION | gunzip > ./genome/annotation.gtf
+mkdir genome 
+cd genome
+wget $ASSEMBLY 
+wget $ANNOTATION 
+gunzip c_elegans.PRJNA13758.WS275.genomic.fa.gz
+gunzip c_elegans.PRJNA13758.WS275.canonical_geneset.gtf.gz
+
+scp c_elegans.PRJNA13758.WS275.genomic.fa assembly.fasta
+scp c_elegans.PRJNA13758.WS275.canonical_geneset.gtf annotation.gtf
 
 #4
 STAR \
